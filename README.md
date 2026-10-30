@@ -25,6 +25,13 @@ A comprehensive, role-based retail shop stock management and Point of Sale (POS)
 | **Cashier** | Restricted strictly to the POS checkout interface and shift sales history. |
 
 ---
+## Screenshots
+
+### Dashboard
+![Dashboard Screenshot](screenshots/dashboard.png)
+
+### POS Screen
+![POS Screenshot](screenshots/pos-screen.png)
 
 ## 🛠️ Tech Stack
 
