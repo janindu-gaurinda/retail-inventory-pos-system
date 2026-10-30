@@ -1,0 +1,367 @@
+/*
+ * ============================================================================
+ * FILE PATH: public/assets/css/ism-admin.css
+ * DESCRIPTION: Shared Global Stylesheet for the ISM System Admin Layout,
+ *              Sidebar, Top Navbar, KPI Stat Cards, Tables, and Forms.
+ * ============================================================================
+ *
+ * CONNECTED LAYOUT & VIEWS:
+ * - Master Layout: resources/views/layouts/admin.blade.php
+ * - Sidebar Partial: resources/views/partials/sidebar.blade.php
+ * - Navbar Partial: resources/views/partials/navbar.blade.php
+ * - Footer Partial: resources/views/partials/footer.blade.php
+ * - All Child Pages:
+ *   - resources/views/admin/dashboard.blade.php
+ *   - resources/views/admin/products/index.blade.php
+ *   - resources/views/admin/products/form.blade.php
+ * ============================================================================
+ */
+
+/* ==========================================================================
+   PART 1: Root Variables & Base Typography
+   ========================================================================== */
+:root {
+    --sidebar-width: 275px;
+    --ism-primary: #1e40af;
+    --ism-primary-hover: #1e3a8a;
+    --ism-dark: #0f172a;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f1f5f9;
+    min-height: 100vh;
+    color: #1e293b;
+}
+
+/* ==========================================================================
+   PART 2: Shared Left Sidebar Navigation
+   Used By: resources/views/partials/sidebar.blade.php
+   ========================================================================== */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--ism-dark);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+    overflow-y: auto;
+    transition: transform 0.25s ease;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+.sidebar-section-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+    padding: 0.75rem 0.75rem 0.35rem;
+}
+
+.sidebar .nav-link {
+    color: #cbd5e1;
+    padding: 0.58rem 0.85rem;
+    border-radius: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+    transition: all 0.15s ease;
+}
+
+.sidebar .nav-link .nav-link-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.sidebar .nav-link:hover {
+    color: #ffffff;
+    background-color: rgba(59, 130, 246, 0.18);
+}
+
+.sidebar .nav-link.active {
+    color: #ffffff;
+    background-color: var(--ism-primary);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.35);
+}
+
+/* ==========================================================================
+   PART 3: Main Content Area & Top Navbar
+   Used By: resources/views/layouts/admin.blade.php & partials/navbar.blade.php
+   ========================================================================== */
+.main-content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+.topbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    min-height: 68px;
+}
+
+.avatar-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ism-primary);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   PART 4: Shared Cards, KPI Stat Boxes & Tables
+   Used Across: Dashboard, Products List, Add/Edit Product, etc.
+   ========================================================================== */
+.stat-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.9rem;
+    background: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.stat-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.content-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.9rem;
+    background: #ffffff;
+}
+
+.quick-action-btn {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    background: #f8fafc;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 0.86rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    transition: all 0.15s ease;
+}
+
+.quick-action-btn:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: var(--ism-primary);
+    transform: translateY(-1px);
+}
+
+.product-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.6rem;
+    background: #eff6ff;
+    color: var(--ism-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+
+.section-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 0.5rem;
+    background: #eff6ff;
+    color: var(--ism-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.barcode-preview-box {
+    border: 2px dashed #cbd5e1;
+    border-radius: 0.85rem;
+    background: #f8fafc;
+}
+
+.quick-product-item {
+    text-decoration: none;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.65rem;
+    padding: 0.6rem 0.8rem;
+    transition: all 0.15s ease;
+    display: block;
+}
+
+.quick-product-item:hover,
+.quick-product-item.active-item {
+    background-color: #eff6ff;
+    border-color: #93c5fd;
+    color: var(--ism-primary);
+}
+
+.table > :not(caption) > * > * {
+    padding: 0.75rem 0.85rem;
+}
+
+/* ==========================================================================
+   PART 5: Barcode / Label Print Grid & Print Media Styles
+   Used By: resources/views/admin/products/barcodes.blade.php
+   ========================================================================== */
+.barcode-sheet-grid {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.barcode-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.barcode-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.barcode-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 767.98px) {
+    .barcode-cols-2,
+    .barcode-cols-3,
+    .barcode-cols-4 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+.barcode-label-card {
+    border: 1px dashed #94a3b8;
+    border-radius: 0.65rem;
+    background: #ffffff;
+    padding: 0.75rem;
+    text-align: center;
+    page-break-inside: avoid;
+}
+
+.barcode-bars {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    background: repeating-linear-gradient(
+        90deg,
+        #0f172a 0px,
+        #0f172a 2px,
+        transparent 2px,
+        transparent 5px,
+        #0f172a 5px,
+        #0f172a 6px,
+        transparent 6px,
+        transparent 9px
+    );
+    height: 36px;
+    margin: 0.35rem auto;
+    width: 90%;
+}
+
+@media print {
+    .sidebar,
+    .topbar,
+    footer,
+    .no-print {
+        display: none !important;
+    }
+    .main-content {
+        margin-left: 0 !important;
+    }
+    body {
+        background: #ffffff !important;
+    }
+    .content-card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+}
+
+/* ==========================================================================
+   PART 6: POS Checkout Screen Styles
+   Used By: resources/views/admin/pos/index.blade.php
+   ========================================================================== */
+.pos-product-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.85rem;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.pos-product-card:hover {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(30, 64, 175, 0.08);
+}
+
+.pos-product-card.out-of-stock {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background-color: #f8fafc;
+}
+
+.pos-cart-panel {
+    position: sticky;
+    top: 84px;
+}
+
+.pos-receipt-box {
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px dashed #64748b;
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+}
+
+
