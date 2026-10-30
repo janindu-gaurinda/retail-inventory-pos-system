@@ -28,10 +28,10 @@ A comprehensive, role-based retail shop stock management and Point of Sale (POS)
 ## Screenshots
 
 ### Dashboard
-![Dashboard Screenshot](screenshots/dashboard.png)
+![Dashboard Screenshot](Screenshots/dashboard.png)
 
 ### POS Screen
-![POS Screenshot](screenshots/pos-screen.png)
+![POS Screenshot](Screenshots/pos-screen.png)
 
 ## 🛠️ Tech Stack
 
